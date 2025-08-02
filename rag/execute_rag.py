@@ -1,5 +1,4 @@
 # execute_rag.py
-from helper_utils import word_wrap
 import chromadb
 from langchain_google_genai import GoogleGenerativeAI
 from langchain_core.messages import SystemMessage, HumanMessage
@@ -9,8 +8,24 @@ import os
 # Cargar las variables de entorno
 load_dotenv(find_dotenv())
 
+def word_wrap(text, width=87):
+    """
+    Wraps the given text to the specified width.
+
+    Args:
+    text (str): The text to wrap.
+    width (int): The width to wrap the text to.
+
+    Returns:
+    str: The wrapped text.
+    """
+    return "\n".join([text[i : i + width] for i in range(0, len(text), width)])
+
+
 # === CONFIGURACIÓN ===
-CHROMA_DIR = "../chroma_storage"  
+# Usar path absoluto para chroma_storage
+import os
+CHROMA_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "chroma_storage")  
 
 chroma_client = chromadb.PersistentClient(path=CHROMA_DIR)
 embedding_function = chromadb.utils.embedding_functions.SentenceTransformerEmbeddingFunction()

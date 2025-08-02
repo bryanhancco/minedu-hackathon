@@ -18,18 +18,6 @@ def project_embeddings(embeddings, umap_transform):
     return projected_embeddings
 
 
-def word_wrap(text, width=87):
-    """
-    Wraps the given text to the specified width.
-
-    Args:
-    text (str): The text to wrap.
-    width (int): The width to wrap the text to.
-
-    Returns:
-    str: The wrapped text.
-    """
-    return "\n".join([text[i : i + width] for i in range(0, len(text), width)])
 
 
 def extract_text_from_pdf(file_path):

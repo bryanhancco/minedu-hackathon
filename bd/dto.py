@@ -62,8 +62,8 @@ class TemaDetallado(BaseModel):
     tema: str
     descripcion: Optional[str]
     imagen: Optional[str]
-    personajes: Dict[int, PersonajeResponse]
-    investigadores: Dict[int, InvestigadorResponse]
+    personajes: List[PersonajeResponse]
+    investigadores: List[InvestigadorResponse]
 
 class PreguntaResponse(BaseModel):
     pregunta: str
@@ -83,6 +83,25 @@ class RespuestaEstudianteResponse(BaseModel):
 class EstudianteCreateResponse(BaseModel):
     id: int
     message: str = "Estudiante registrado exitosamente"
+
+class EstudianteResponse(BaseModel):
+    id: int
+    nombre: str
+    sexo: SexoEnum
+    grado: GradoEnum
+
+class EstudianteUpdate(BaseModel):
+    nombre: str
+    sexo: SexoEnum
+    grado: GradoEnum
+
+class PreguntaTemporal(BaseModel):
+    pregunta: str
+    alternativa_a: Optional[str]
+    alternativa_b: Optional[str]
+    alternativa_c: Optional[str]
+    alternativa_d: Optional[str]
+    alternativa_correcta: int
 
 # DTOs para respuestas de API
 class ApiResponse(BaseModel):
