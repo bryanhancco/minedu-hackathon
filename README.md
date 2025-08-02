@@ -121,3 +121,31 @@ El sistema utiliza:
 2. Ejecutar la API con `python run_api.py`
 3. Usar los endpoints para obtener temas, preguntas y gestionar estudiantes
 4. Generar preguntas personalizadas usando el sistema RAG integrado
+
+## Deploy en Render
+
+Para desplegar en Render como web service:
+
+### 1. Configuración en Render Dashboard:
+- **Build Command**: `pip install -r requirements.txt`
+- **Start Command**: `uvicorn api.api:app --host 0.0.0.0 --port $PORT`
+- **Environment**: Python 3
+- **Instance Type**: Free tier o superior
+
+### 2. Variables de entorno requeridas:
+```bash
+SUPABASE_URL=tu_supabase_url
+SUPABASE_API_KEY=tu_supabase_service_key
+GOOGLE_API_KEY=tu_google_api_key
+```
+
+### 3. Archivos incluidos para Render:
+- ✅ `Procfile` - Comando de inicio
+- ✅ `runtime.txt` - Versión de Python
+- ✅ `start.sh` - Script de inicio alternativo
+- ✅ `package.json` - Metadatos del proyecto
+
+### 4. URL de la API desplegada:
+- Base URL: `https://tu-app.onrender.com`
+- Documentación: `https://tu-app.onrender.com/docs`
+- Health check: `https://tu-app.onrender.com/health`

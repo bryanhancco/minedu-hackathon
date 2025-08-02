@@ -125,6 +125,7 @@ celerybeat.pid
 env/
 venv/
 ENV/
+files/
 env.bak/
 venv.bak/
 
@@ -207,3 +208,9 @@ bd/preguntas_generated.sql
 
 # NOTA: chroma_storage/ se mantiene en el repositorio
 # NO agregamos chroma_storage/ al .gitignore para conservar la data vectorial
+
+# Archivos de configuración para deploy - MANTENER en el repo
+# Procfile
+# runtime.txt
+# start.sh
+# package.json
